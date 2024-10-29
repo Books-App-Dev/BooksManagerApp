@@ -4,47 +4,39 @@ import java.util.Scanner;
 
 public class Books {
     public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
-    boolean salir = false;
-        int option;
+        Scanner scanner = new Scanner(System.in);
+        String[] menu = {
+                "1. Añadir libro",
+                "2. Ver todos los libros",
+                "3. Eliminar libro",
+                "4. Cambiar repositorio",
+                "5. Salir"
+        };
 
-        String number1 = "1";
-        String number2 = "2";
-        String number3 = "3";
-        String number4 = "4";
-        String number5 = "5";
+        Byte option = 0;
+        while (option != 5) {
+            for (String item : menu) {
+                System.out.println(item);
+            }
 
-    option = scanner.nextInt();
+            System.out.println("Seleccione una opción:");
+            String input = scanner.nextLine();
 
-        System.out.println("Gestor de Libros Técnicos de Programación");
-        System.out.println("1. Añadir libro");
-        System.out.println("2. Ver todos los libros");
-        System.out.println("3. Eliminar libro");
-        System.out.println("4. Cambiar repositorio");
-        System.out.println("5. Salir");
-        System.out.println("Seleccione una opción:");
+            try {
+                option = Byte.parseByte(input);
+            } catch (Exception ex) {
+                System.out.println("Eso no es un numero, introduce un numero de [1-5]");
+                continue;
+            }
 
-        Scanner number = new Scanner(System.in);
-        String numberInput = number.nextLine();
+            if (option < 1 || option > 5) {
+                System.out.println("Introduce un numero de [1-5]");
+                continue;
+            }
 
-        switch (option) {
-            case 1:
-                System.out.println("1. Añadir libro");
-                break;
-            case 2:
-                System.out.println("2. Ver todos los libros");
-                break;
-            case 3:
-                System.out.println("3. Eliminar libro");
-                break;
-            case 4:
-                System.out.println("4. Cambiar repositorio");
-                break;
-            case 5:
-                salir = true;
-                break;
+            System.out.println("Has elegido: " + menu[option - 1]);
+
         }
-
-
     }
 }
+
