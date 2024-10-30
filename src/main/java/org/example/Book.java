@@ -11,8 +11,9 @@ public class Book {
         this.titulo = titulo;
         this.autor = autor;
     }
+
     public String infoLibros() {
-        return "ISBN: " + isbn + ", Título: " + titulo + ", Autor: " + autor;
+        return "ISBN: " + isbn + "\nTítulo: " + titulo + "\nAutor: " + autor + "\n";
     }
 }
 

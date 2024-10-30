@@ -3,13 +3,17 @@ package org.example;
 import java.util.Scanner;
 
 public class App {
-    public void printMenu () {
-        Book books = new Book("A123", "Effective Java", "Joshua Bloch");
+    public void printMenu() {
+        Book book1 = new Book("A123", "Effective Java", "Joshua Bloch");
+        Book book2 = new Book("A240", "El príncipe de la niebla", "Carlos Ruiz Zafón");
+        Book book3 = new Book("A360", "Harry Potter", "J.K.Rowling");
+
+        Book[] books = {book1, book2, book3};
 
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("\nGestor de Libros Técnicos de Programación\n");
         String[] menu = {
-                "Gestor de Libros Técnicos de Programación",
                 "1. Añadir libro",
                 "2. Ver todos los libros",
                 "3. Eliminar libro",
@@ -23,7 +27,7 @@ public class App {
                 System.out.println(item);
             }
 
-            System.out.println("Seleccione una opción:");
+            System.out.println("\nSeleccione una opción:");
             String input = scanner.nextLine();
 
             try {
@@ -39,17 +43,16 @@ public class App {
             }
 
             if (option == 2) {
-                System.out.println(books.infoLibros());
-                continue;
+
+                for (Book book : books) {
+                    System.out.println(book.infoLibros());
+                }
+                if (books.length == 0) {
+                    System.out.println("No hay libros en la colección.");
+                }
             }
-
-            System.out.println("Has elegido: " + menu[option]);
-
-
+            System.out.println("\nHas elegido: " + menu[option - 1]);
         }
-
     }
-
-
 }
 
