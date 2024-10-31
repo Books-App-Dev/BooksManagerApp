@@ -1,7 +1,11 @@
 package org.example;
 import org.example.util.Color;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
+
+
 
 public class App {
     public void printMenu() {
@@ -10,6 +14,7 @@ public class App {
         Book book3 = new Book("A360", "Harry Potter", "J.K.Rowling");
 
         Book[] books = {book1, book2, book3};
+        ArrayList<Book> bookList = new ArrayList<>(Arrays.asList(books));
 
         Scanner scanner = new Scanner(System.in);
         //Cambiamos color usando class Color y su atributo - color WHITE
@@ -21,6 +26,9 @@ public class App {
                 "4. Cambiar repositorio",
                 "5. Salir"
         };
+
+
+
 
         Byte option = 0;
         while (option != 5) {
@@ -44,9 +52,27 @@ public class App {
                 continue;
             }
 
+            if (option == 1) {
+                int count = 0;
+
+                System.out.println("Ingrese el título: ");
+                String scTitle = scanner.nextLine();
+                System.out.println("Ingrese el autor: ");
+                String  scAuthor = scanner.nextLine();
+                System.out.println("Ingrese el ISBN (una letra seguida de tres números, por ejemplo, A123): ");
+                String scISBN = scanner.nextLine();
+
+                Book createdBook = new Book(scISBN, scTitle, scAuthor);
+                bookList.add(createdBook);
+
+                for (Book book : bookList) {
+                    System.out.println(book.infoLibros());
+                }
+            }
+
             if (option == 2) {
 
-                for (Book book : books) {
+                for (Book book : bookList) {
                     System.out.println(book.infoLibros());
                 }
                 if (books.length == 0) {
