@@ -1,4 +1,5 @@
 package org.example;
+import org.example.util.Color;
 
 import java.util.Scanner;
 
@@ -11,8 +12,8 @@ public class App {
         Book[] books = {book1, book2, book3};
 
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println("\nGestor de Libros Técnicos de Programación\n");
+        //Cambiamos color usando class Color y su atributo - color WHITE
+        System.out.println(Color.CYAN + "\nGestor de Libros Técnicos de Programación\n" + Color.RESET); //Cambiamos color usando class Color y su atributo - color
         String[] menu = {
                 "1. Añadir libro",
                 "2. Ver todos los libros",
@@ -23,11 +24,12 @@ public class App {
 
         Byte option = 0;
         while (option != 5) {
+            System.out.println(Color.GREEN + " **** MENU ****" + Color.RESET); // Estoy cambiando color a verde
             for (String item : menu) {
                 System.out.println(item);
             }
 
-            System.out.println("\nSeleccione una opción:");
+            System.out.println(Color.YELLOW + "\nSeleccione una opción, introduce un numero de 1 a 5:" + Color.RESET);
             String input = scanner.nextLine();
 
             try {
