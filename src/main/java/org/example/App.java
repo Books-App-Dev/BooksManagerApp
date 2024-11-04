@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-
-
 public class App {
     private boolean isValidISBN(String isbn) {
-        return isbn.matches("[A-Za-z]\\d{3}");
+        return isbn.matches("[A-Z]\\d{3}");
     }
 
     public void printMenu() {
@@ -30,9 +28,6 @@ public class App {
                 "4. Cambiar repositorio",
                 "5. Salir"
         };
-
-
-
 
         Byte option = 0;
         while (option != 5) {
@@ -59,25 +54,38 @@ public class App {
             if (option == 1) {
                 int count = 0;
 
-                System.out.println("Ingrese el título: ");
-                String scTitle = scanner.nextLine();
-                System.out.println("Ingrese el autor: ");
-                String  scAuthor = scanner.nextLine();
-                System.out.println("Ingrese el ISBN (una letra seguida de tres números, por ejemplo, A123): ");
-                String scISBN = scanner.nextLine();
+                String scTitle;
+                String  scAuthor;
+                String  scISBN;
 
                 // Validar el ISBN antes de agregar el libro
                 while (true) {
+                    System.out.println("Ingrese el título: ");
+                    scTitle = scanner.nextLine();
+                    if (scTitle.isEmpty() && scTitle.isBlank()){
+                        System.out.println("Campo title no puede estar vacío");
+                        continue;
+                    }
+                    System.out.println("Ingrese el autor: ");
+                    scAuthor = scanner.nextLine();
+                    if (scAuthor.isEmpty() && scAuthor.isBlank()){
+                        System.out.println("Campo autor no puede estar vacío");
+                        continue;
+                    }
                     System.out.println("Ingrese el ISBN (una letra seguida de tres números, por ejemplo, A123): ");
-                    scISBN = scanner.nextLine();
-
+                    scISBN = scanner.nextLine().toUpperCase();
+                    if (scISBN.isEmpty() && scISBN.isBlank()){
+                        System.out.println("Campo ISBN no puede estar vacío");
+                        continue;
+                    }
                     if (isValidISBN(scISBN)) {
+                        System.out.println("Libro añadido con éxito!\n");
                         break; // Salir del bucle si el ISBN es válido
                     } else {
                         System.out.println("Formato inválido. Asegúrese de que el ISBN tenga una letra seguida de tres números.");
                     }
                 }
-
+                System.out.println("Tu colección");
                 Book createdBook = new Book(scISBN, scTitle, scAuthor);
                 bookList.add(createdBook);
 
