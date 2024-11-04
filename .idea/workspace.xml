@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="204334a3-49a0-47e8-abff-10b4942d1421" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-    </list>
+    <list default="true" id="204334a3-49a0-47e8-abff-10b4942d1421" name="Changes" comment="Validations of inputs" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,6 +90,19 @@
       <option name="presentableId" value="Default" />
       <updated>1730201002211</updated>
     </task>
+    <task id="LOCAL-00001" summary="Validations of inputs">
+      <option name="closed" value="true" />
+      <created>1730713170513</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1730713170513</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Validations of inputs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Validations of inputs" />
   </component>
 </project>
