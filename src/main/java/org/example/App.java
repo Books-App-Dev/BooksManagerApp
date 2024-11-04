@@ -8,6 +8,10 @@ import java.util.Scanner;
 
 
 public class App {
+    private boolean isValidISBN(String isbn) {
+        return isbn.matches("[A-Za-z]\\d{3}");
+    }
+
     public void printMenu() {
         Book book1 = new Book("A123", "Effective Java", "Joshua Bloch");
         Book book2 = new Book("A240", "El príncipe de la niebla", "Carlos Ruiz Zafón");
@@ -61,6 +65,18 @@ public class App {
                 String  scAuthor = scanner.nextLine();
                 System.out.println("Ingrese el ISBN (una letra seguida de tres números, por ejemplo, A123): ");
                 String scISBN = scanner.nextLine();
+
+                // Validar el ISBN antes de agregar el libro
+                while (true) {
+                    System.out.println("Ingrese el ISBN (una letra seguida de tres números, por ejemplo, A123): ");
+                    scISBN = scanner.nextLine();
+
+                    if (isValidISBN(scISBN)) {
+                        break; // Salir del bucle si el ISBN es válido
+                    } else {
+                        System.out.println("Formato inválido. Asegúrese de que el ISBN tenga una letra seguida de tres números.");
+                    }
+                }
 
                 Book createdBook = new Book(scISBN, scTitle, scAuthor);
                 bookList.add(createdBook);
