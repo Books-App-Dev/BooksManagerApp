@@ -51,30 +51,30 @@ public class App {
                 continue;
             }
 
+// Options
             if (option == 1) {
-                int count = 0;
 
                 String scTitle;
                 String  scAuthor;
                 String  scISBN;
 
-                // Validar el ISBN antes de agregar el libro
+                // Validar campos antes de agregar el libro
                 while (true) {
                     System.out.println("Ingrese el título: ");
                     scTitle = scanner.nextLine();
-                    if (scTitle.isEmpty() && scTitle.isBlank()){
+                    if (scTitle.isEmpty() || scTitle.isBlank()){
                         System.out.println("Campo title no puede estar vacío");
                         continue;
                     }
                     System.out.println("Ingrese el autor: ");
                     scAuthor = scanner.nextLine();
-                    if (scAuthor.isEmpty() && scAuthor.isBlank()){
+                    if (scAuthor.isEmpty() || scAuthor.isBlank()){
                         System.out.println("Campo autor no puede estar vacío");
                         continue;
                     }
                     System.out.println("Ingrese el ISBN (una letra seguida de tres números, por ejemplo, A123): ");
                     scISBN = scanner.nextLine().toUpperCase();
-                    if (scISBN.isEmpty() && scISBN.isBlank()){
+                    if (scISBN.isEmpty() || scISBN.isBlank()){
                         System.out.println("Campo ISBN no puede estar vacío");
                         continue;
                     }
@@ -95,7 +95,7 @@ public class App {
             }
 
             if (option == 2) {
-
+//hacer funcion
                 for (Book book : bookList) {
                     System.out.println(book.infoLibros());
                 }
