@@ -1,16 +1,10 @@
 package org.example;
-
 import org.example.util.Color;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
+    final BookManager bookManager = new BookManager();
     Scanner scanner = new Scanner(System.in);
-
-    private boolean isValidISBN(String isbn) {
-        return isbn.matches("[A-Z]\\d{3}");
-    }
-    ArrayList<Book> bookList = new ArrayList<>();
 
     public void printMenu() {
 
@@ -69,33 +63,19 @@ public class App {
         String scISBN = scanner.nextLine().toUpperCase();
 
         try {
-            this.createBook(scISBN, scAuthor, scTitle);
+            this.bookManager.createBook(scISBN, scAuthor, scTitle, this);
             System.out.println("El libro ha sido añadido con éxito");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+    }
 
-    }
-    private void createBook(String scISBN, String scAuthor, String scTitle) {
-        if (bookList.stream().anyMatch(book -> book.getIsbn().equals(scISBN))) {
-            throw new IllegalArgumentException(Color.RED + "Un libro ya existe con este ISBN" + Color.RESET);
-        }
-        if (!isValidISBN(scISBN)) {
-            throw new IllegalArgumentException(Color.RED + "El formato de ISBN no es valido (ejemplo correcto: A123)" + Color.RESET);
-        }
-        if (scISBN.isEmpty() || scAuthor.isEmpty() || scTitle.isEmpty() ||
-                scISBN.isBlank() || scAuthor.isBlank() || scTitle.isBlank()) {
-            throw new NullPointerException(Color.RED + "Rellena todos los campos" + Color.RESET);
-        }
-        Book book = new Book(scISBN, scAuthor, scTitle);
-        bookList.add(book);
-    }
     //Option 2
     private void printBookList() {
-        for (Book book : bookList) {
+        for (Book book : bookManager.bookList) {
             System.out.println(book.infoLibros());
         }
-        if (bookList.isEmpty()) {
+        if (bookManager.bookList.isEmpty()) {
             System.out.println("No hay libros en la colección.");
         }
     }
@@ -107,9 +87,10 @@ public class App {
         System.out.println("Se ha eliminado el libro: " + isbnToDelete);
 
     }
-    private void deleteByIsbn(String isbnToDelete){
-        bookList.removeIf(book -> book.getIsbn().equals(isbnToDelete));
-    }
 
+    //TODO move method to new class
+    private void deleteByIsbn(String isbnToDelete){
+        bookManager.bookList.removeIf(book -> book.getIsbn().equals(isbnToDelete));
+    }
 }
 
