@@ -1,8 +1,10 @@
 package org.example;
+
 import org.example.util.Color;
+
 import java.util.Scanner;
 
-public class App {
+public class BookConsoleView {
     final BookManager bookManager = new BookManager();
     Scanner scanner = new Scanner(System.in);
 
@@ -39,9 +41,8 @@ public class App {
                 continue;
             }
             optionSelector(option);
-            System.out.println("\nHas elegido: " + menu[option - 1]);
-        }
 
+        }
     }
 
     private void optionSelector(byte option) {
@@ -63,7 +64,7 @@ public class App {
         String scISBN = scanner.nextLine().toUpperCase();
 
         try {
-            this.bookManager.createBook(scISBN, scAuthor, scTitle, this);
+            this.bookManager.createBook(scISBN, scAuthor, scTitle);
             System.out.println("El libro ha sido añadido con éxito");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -72,25 +73,29 @@ public class App {
 
     //Option 2
     private void printBookList() {
-        for (Book book : bookManager.bookList) {
+
+        var bookList = bookManager.getAllBooks();
+
+        for (Book book : bookList) {
             System.out.println(book.infoLibros());
         }
-        if (bookManager.bookList.isEmpty()) {
+        if (bookManager.getAllBooks().isEmpty()) {
             System.out.println("No hay libros en la colección.");
         }
     }
+
     //Option 3
-    private void printRemoveBookMenu(){
+    private void printRemoveBookMenu() {
         System.out.println("Introduce el ISBN del libro que quieres borrar: ");
         String isbnToDelete = scanner.nextLine().toUpperCase();
-        this.deleteByIsbn (isbnToDelete);
-        System.out.println("Se ha eliminado el libro: " + isbnToDelete);
 
+        try {
+            this.bookManager.deleteByIsbn(isbnToDelete);
+            System.out.println("Se ha eliminado el libro: " + isbnToDelete);
+        } catch (Exception ex) {
+            System.out.println(Color.RED + ex.getMessage() + Color.RESET);
+        }
     }
 
-    //TODO move method to new class
-    private void deleteByIsbn(String isbnToDelete){
-        bookManager.bookList.removeIf(book -> book.getIsbn().equals(isbnToDelete));
-    }
 }
 

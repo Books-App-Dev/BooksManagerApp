@@ -1,18 +1,23 @@
 package org.example;
+
 import org.example.util.Color;
+
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class BookManager {
     //attributes
-    public ArrayList<Book> bookList = new ArrayList<Book>();
+    private ArrayList<Book> bookList = new ArrayList<Book>();
 
     //constructor
     public BookManager() {
     }
 
     //methods
+
     /**
      * Método que esta comprobando formato de ISBN
+     *
      * @param isbn pasamos datos que recibimos de usuario
      * @return true o false
      */
@@ -20,19 +25,34 @@ public class BookManager {
         return isbn.matches("[A-Z]\\d{3}");
     }
 
-    public void createBook(String scISBN, String scAuthor, String scTitle, App app) {
+    public void createBook(String scISBN, String scAuthor, String scTitle) {
 
+        validarCampos(scISBN, scAuthor, scTitle);
+        Book book = new Book(scISBN, scAuthor, scTitle);
+        bookList.add(book);
+    }
+
+    private void validarCampos(String scISBN, String scAuthor, String scTitle) {
         if (bookList.stream().anyMatch(book -> book.getIsbn().equals(scISBN))) {
             throw new IllegalArgumentException(Color.RED + "Un libro ya existe con este ISBN" + Color.RESET);
         }
-        if (!isValidISBN(scISBN)) {
-            throw new IllegalArgumentException(Color.RED + "El formato de ISBN no es valido (ejemplo correcto: A123)" + Color.RESET);
+        if (!isValidISBN(scISBN) || scISBN.isEmpty() || scISBN.isBlank()) {
+            throw new IllegalArgumentException(Color.RED + "El formato de ISBN no es valido (ejemplo correcto: A123) o campo está vacío" + Color.RESET);
         }
-        if (scISBN.isEmpty() || scAuthor.isEmpty() || scTitle.isEmpty() ||
-                scISBN.isBlank() || scAuthor.isBlank() || scTitle.isBlank()) {
+        if (scAuthor.isEmpty() || scTitle.isEmpty() ||
+                scAuthor.isBlank() || scTitle.isBlank()) {
             throw new NullPointerException(Color.RED + "Rellena todos los campos" + Color.RESET);
         }
-        Book book = new Book(scISBN, scAuthor, scTitle);
-        bookList.add(book);
+    }
+
+    public void deleteByIsbn(String isbnToDelete) {
+        boolean remove = bookList.removeIf(book -> book.getIsbn().equals(isbnToDelete));
+        if (!remove) {
+            throw new NoSuchElementException("No se encontró ningún libro con el ISBN: " + isbnToDelete);
+        }
+    }
+
+    public ArrayList<Book> getAllBooks() {
+        return bookList;
     }
 }
