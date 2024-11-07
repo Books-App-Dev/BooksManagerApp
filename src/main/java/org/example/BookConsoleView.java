@@ -26,18 +26,18 @@ public class BookConsoleView {
             for (String item : menu) {
                 System.out.println(item);
             }
-            System.out.println(Color.YELLOW + "\nSeleccione una opción, introduce un numero de 1 a 5:" + Color.RESET);
+            System.out.println(Color.YELLOW + "\nSeleccione una opción, introduce un número de 1 a 5:" + Color.RESET);
             String input = scanner.nextLine();
 
             try {
                 option = Byte.parseByte(input);
             } catch (Exception ex) {
-                System.out.println("Eso no es un numero, introduce un numero de [1-5]");
+                System.out.println("Eso no es un número, introduce un número de [1-5]");
                 continue;
             }
 
             if (option < 1 || option > 5) {
-                System.out.println("Introduce un numero de [1-5]");
+                System.out.println("Introduce un número de [1-5]");
                 continue;
             }
             optionSelector(option);
@@ -65,7 +65,7 @@ public class BookConsoleView {
 
         try {
             this.bookManager.createBook(scISBN, scAuthor, scTitle);
-            System.out.println("El libro ha sido añadido con éxito");
+            System.out.println("El libro ha sido añadido con éxito!");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

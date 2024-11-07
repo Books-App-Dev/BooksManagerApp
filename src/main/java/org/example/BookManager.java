@@ -27,28 +27,28 @@ public class BookManager {
 
     public void createBook(String scISBN, String scAuthor, String scTitle) {
 
-        validarCampos(scISBN, scAuthor, scTitle);
+        validInput(scISBN, scAuthor, scTitle);
         Book book = new Book(scISBN, scAuthor, scTitle);
         bookList.add(book);
     }
 
-    private void validarCampos(String scISBN, String scAuthor, String scTitle) {
+    private void validInput(String scISBN, String scAuthor, String scTitle) {
         if (bookList.stream().anyMatch(book -> book.getIsbn().equals(scISBN))) {
             throw new IllegalArgumentException(Color.RED + "Un libro ya existe con este ISBN" + Color.RESET);
         }
         if (!isValidISBN(scISBN) || scISBN.isEmpty() || scISBN.isBlank()) {
-            throw new IllegalArgumentException(Color.RED + "El formato de ISBN no es valido (ejemplo correcto: A123) o campo está vacío" + Color.RESET);
+            throw new IllegalArgumentException(Color.RED + "El formato de ISBN no es válido (ejemplo correcto: A123) o campo está vacío" + Color.RESET);
         }
         if (scAuthor.isEmpty() || scTitle.isEmpty() ||
                 scAuthor.isBlank() || scTitle.isBlank()) {
-            throw new NullPointerException(Color.RED + "Rellena todos los campos" + Color.RESET);
+            throw new NullPointerException(Color.RED + "Rellena todos los campos!" + Color.RESET);
         }
     }
 
     public void deleteByIsbn(String isbnToDelete) {
         boolean remove = bookList.removeIf(book -> book.getIsbn().equals(isbnToDelete));
         if (!remove) {
-            throw new NoSuchElementException("No se encontró ningún libro con el ISBN: " + isbnToDelete);
+            throw new NoSuchElementException("No se encontró ningún libro con este ISBN: " + isbnToDelete);
         }
     }
 
