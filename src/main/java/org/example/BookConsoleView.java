@@ -96,6 +96,5 @@ public class BookConsoleView {
             System.out.println(Color.RED + ex.getMessage() + Color.RESET);
         }
     }
-
 }
 
