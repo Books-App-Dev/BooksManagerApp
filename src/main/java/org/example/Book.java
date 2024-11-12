@@ -28,5 +28,14 @@ public class Book {
     public String infoLibros() {
         return "ISBN: " + isbn + "\nTítulo: " + titulo + "\nAutor: " + autor + "\n";
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "isbn='" + isbn + '\'' +
+                ", titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                '}';
+    }
 }
 
