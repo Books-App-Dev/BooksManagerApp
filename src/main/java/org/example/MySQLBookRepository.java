@@ -9,9 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class MySQLBookRepository {
+public class MySQLBookRepository implements BookRepository {
 
     //CRUD
+    @Override
     public void save(Book book) {
         //CREATE a BOOK IN DATABASE
         book.getIsbn();
@@ -30,6 +31,7 @@ public class MySQLBookRepository {
         }
     }
 
+    @Override
     public List<Book> findAll() throws SQLException {
         String sql = "SELECT * FROM libros";
         List<Book> bookList = new ArrayList<>();
@@ -53,6 +55,7 @@ public class MySQLBookRepository {
         return bookList;
     }
 
+    @Override
     public Optional<Book> findByIsbn(String isbn) throws SQLException {
         String sql = "SELECT * FROM libros WHERE isbn='%s'".formatted(isbn);
 
@@ -75,6 +78,7 @@ public class MySQLBookRepository {
         return Optional.empty();
     }
 
+    @Override
     public void deleteByIsbn(String isbn) {
         String sql = "DELETE FROM libros WHERE isbn = '%s'".formatted(isbn);
 
