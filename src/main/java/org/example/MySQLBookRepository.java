@@ -74,4 +74,17 @@ public class MySQLBookRepository {
         }
         return Optional.empty();
     }
+
+    public void deleteByIsbn(String isbn) {
+        String sql = "DELETE FROM libros WHERE isbn = '%s'".formatted(isbn);
+
+        try {
+            Connection connection = MySQLConnection.getConnection();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sql);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

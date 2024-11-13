@@ -1,6 +1,7 @@
 package org.example;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,11 +10,11 @@ public class Main {
         //BookConsoleView nuestraApp = new BookConsoleView();
         //  nuestraApp.printMenu();
         // CASO DE USO: Guardar libro
-        Book book = new Book("C233", "Clean Code", "Uncle Bob");
+        /*Book book = new Book("C233", "Clean Code", "Uncle Bob");
         MySQLBookRepository bookRepository = new MySQLBookRepository();
-        bookRepository.save(book);
+        bookRepository.save(book);*/
 
-        List<Book> bookList = bookRepository.findAll();
+        /*List<Book> bookList = bookRepository.findAll();
         for (Book book1 : bookList) {
             System.out.println("El ISBN es " + book1.getIsbn());
             System.out.println("El libro es " + book1.getTitulo());
@@ -29,8 +30,18 @@ public class Main {
 
         if (optionalBook.isEmpty()) {
             System.out.println("El libro no existe.");
-        }
+        }*/
 
+        MySQLBookRepository mySQLBookRepository = new MySQLBookRepository();
+        mySQLBookRepository.deleteByIsbn("A125");
+        mySQLBookRepository.deleteByIsbn("C233");
+
+        List<Book> bookList1 = mySQLBookRepository.findAll();
+        for (Book book1 : bookList1) {
+            System.out.println("El ISBN es " + book1.getIsbn());
+            System.out.println("El libro es " + book1.getTitulo());
+            System.out.println("El autor es " + book1.getAutor() + "\n");
+        }
     }
 }
 
