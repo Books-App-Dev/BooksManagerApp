@@ -8,9 +8,9 @@ public interface BookRepository {
     //CRUD
     void save(Book book);
 
-    List<Book> findAll() throws SQLException;
+    List<Book> findAll();
 
-    Optional<Book> findByIsbn(String isbn) throws SQLException;
+    Optional<Book> findByIsbn(String isbn);
 
     void deleteByIsbn(String isbn);
 }

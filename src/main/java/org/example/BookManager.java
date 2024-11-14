@@ -3,15 +3,13 @@ package org.example;
 import org.example.util.Color;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class BookManager {
     //attributes
-    private ArrayList<Book> bookList = new ArrayList<Book>();
-    private BookRepository bookRepository = new MySQLBookRepository();
+    private BookRepository bookRepository = new InMemoryBookRepository();
 
     //constructor
     public BookManager() {
@@ -29,14 +27,14 @@ public class BookManager {
         return isbn.matches("[A-Z]\\d{3}");
     }
 
-    public void createBook(String scISBN, String scAuthor, String scTitle) throws SQLException {
+    public void createBook(String scISBN, String scAuthor, String scTitle)  {
 
         validInput(scISBN, scAuthor, scTitle);
         Book book = new Book(scISBN, scAuthor, scTitle);
         bookRepository.save(book);
     }
 
-    private void validInput(String scISBN, String scAuthor, String scTitle) throws SQLException {
+    private void validInput(String scISBN, String scAuthor, String scTitle)  {
         Optional<Book> optionalBook = bookRepository.findByIsbn(scISBN);
 
         if (optionalBook.isPresent()) {
@@ -51,7 +49,7 @@ public class BookManager {
         }
     }
 
-    public void deleteByIsbn(String isbnToDelete) throws SQLException {
+    public void deleteByIsbn(String isbnToDelete) {
         Optional<Book> optionalBook = bookRepository.findByIsbn(isbnToDelete);
         bookRepository.deleteByIsbn(isbnToDelete);
         if (optionalBook.isEmpty()) {
@@ -59,7 +57,7 @@ public class BookManager {
         }
     }
 
-    public List<Book> getAllBooks() throws SQLException {
+    public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 }

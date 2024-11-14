@@ -2,6 +2,8 @@ package org.example;
 
 import org.example.util.Color;
 
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 public class BookConsoleView {
@@ -74,12 +76,16 @@ public class BookConsoleView {
     //Option 2
     private void printBookList() {
 
-        var bookList = bookManager.getAllBooks();
-
-        for (Book book : bookList) {
-            System.out.println(book.infoLibros());
+        List<Book> bookList = bookManager.getAllBooks();
+        try {
+            for (Book book : bookList) {
+                System.out.println(book.infoLibros());
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        if (bookManager.getAllBooks().isEmpty()) {
+
+        if (bookList.isEmpty()) {
             System.out.println("No hay libros en la colección.");
         }
     }
