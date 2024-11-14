@@ -1,17 +1,15 @@
-package org.example;
+package logic;
 
 public class Book {
-//Atributos
     String isbn;
     String titulo;
     String autor;
-//Constructor
+
     public Book(String isbn, String titulo, String autor) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
     }
-//Getters y setters
 
     public String getIsbn() {
         return isbn;

@@ -1,8 +1,12 @@
-package org.example;
+package presentation;
 
+import logic.Book;
+import logic.BookManager;
+import logic.BookRepository;
 import org.example.util.Color;
+import persistance.InMemoryBookRepository;
+import persistance.MySQLBookRepository;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -32,7 +36,7 @@ public class BookConsoleView {
         byte option = 0;
         while (option != 5) {
 
-            System.out.println(Color.GREEN + " **** MENU ****" + Color.RESET); // Estoy cambiando color a verde
+            System.out.println(Color.GREEN + " **** MENU ****" + Color.RESET);
             for (String item : menu) {
                 System.out.println(item);
             }
@@ -51,7 +55,6 @@ public class BookConsoleView {
                 continue;
             }
             optionSelector(option);
-
         }
     }
 
@@ -62,7 +65,6 @@ public class BookConsoleView {
         if (option == 4) this.printChangeRepository();
     }
 
-    // option 1
     private void printAddBookMenu() {
 
         System.out.println("Ingrese el título: ");
@@ -82,7 +84,6 @@ public class BookConsoleView {
         }
     }
 
-    //Option 2
     private void printBookList() {
 
         List<Book> bookList = bookManager.getAllBooks();
@@ -99,7 +100,6 @@ public class BookConsoleView {
         }
     }
 
-    //Option 3
     private void printRemoveBookMenu() {
         System.out.println("Introduce el ISBN del libro que quieres borrar: ");
         String isbnToDelete = scanner.nextLine().toUpperCase();
@@ -112,7 +112,6 @@ public class BookConsoleView {
         }
     }
 
-    //Option 4
     private void printChangeRepository(){
         System.out.println("Seleccione el tipo de repositorio: ");
         System.out.println("1. Memoria");

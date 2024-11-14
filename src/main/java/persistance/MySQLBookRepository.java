@@ -1,4 +1,8 @@
-package org.example;
+package persistance;
+
+import logic.Book;
+import logic.BookRepository;
+import config.MySQLConnection;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,14 +15,11 @@ import java.util.Optional;
 
 public class MySQLBookRepository implements BookRepository {
 
-    //CRUD
     @Override
     public void save(Book book) {
-        //CREATE a BOOK IN DATABASE
         book.getIsbn();
         String sql = "INSERT INTO libros (isbn, title,author) VALUES ('%s', '%s', '%s')"
                 .formatted(book.getIsbn(), book.getTitulo(), book.getAutor());
-
 
         try {
             Connection connection = MySQLConnection.getConnection();

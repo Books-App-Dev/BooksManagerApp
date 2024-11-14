@@ -1,33 +1,22 @@
-package org.example;
+package logic;
 
 import org.example.util.Color;
-
-import java.sql.SQLException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class BookManager {
-    //attributes
+
     private BookRepository bookRepository;
 
-    //constructor
     public BookManager() {
     }
-    //methods
 
-    /**
-     * Método que esta comprobando formato de ISBN
-     *
-     * @param isbn pasamos datos que recibimos de usuario
-     * @return true o false
-     */
     private boolean isValidISBN(String isbn) {
         return isbn.matches("[A-Z]\\d{3}");
     }
 
     public void createBook(String scISBN, String scAuthor, String scTitle)  {
-
         validInput(scISBN, scAuthor, scTitle);
         Book book = new Book(scISBN, scAuthor, scTitle);
         bookRepository.save(book);

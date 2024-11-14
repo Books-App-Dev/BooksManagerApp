@@ -1,4 +1,4 @@
-package org.example;
+package config;
 
 import java.sql.*;
 
