@@ -7,8 +7,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BookConsoleView {
-    final BookManager bookManager = new BookManager();
+    private final BookManager bookManager;
+    private final BookRepository inMemoryRepository;
+    private final BookRepository mySQLRepository;
     Scanner scanner = new Scanner(System.in);
+
+    public BookConsoleView() {
+       this.bookManager  = new BookManager();
+       this.inMemoryRepository = new InMemoryBookRepository();
+       this.mySQLRepository = new MySQLBookRepository();
+    }
 
     public void printMenu() {
 
@@ -51,6 +59,7 @@ public class BookConsoleView {
         if (option == 1) this.printAddBookMenu();
         if (option == 2) this.printBookList();
         if (option == 3) this.printRemoveBookMenu();
+        if (option == 4) this.printChangeRepository();
     }
 
     // option 1
@@ -100,6 +109,25 @@ public class BookConsoleView {
             System.out.println("Se ha eliminado el libro: " + isbnToDelete);
         } catch (Exception ex) {
             System.out.println(Color.RED + ex.getMessage() + Color.RESET);
+        }
+    }
+
+    //Option 4
+    private void printChangeRepository(){
+        System.out.println("Seleccione el tipo de repositorio: ");
+        System.out.println("1. Memoria");
+        System.out.println("2. Base de datos MySQL");
+        System.out.println("Seleccione una opción: ");
+
+        String optionRepository = scanner.nextLine();
+
+        if(optionRepository.equals("1")){
+            bookManager.changeRepository(inMemoryRepository);
+            System.out.println("Se cambió a repositorio de memoria");
+        }
+        if(optionRepository.equals("2")){
+            bookManager.changeRepository(mySQLRepository);
+            System.out.println("Se cambió a repositorio de base de datos MySQL");
         }
     }
 }

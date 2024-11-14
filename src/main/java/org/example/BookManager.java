@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public class BookManager {
     //attributes
-    private BookRepository bookRepository = new InMemoryBookRepository();
+    private BookRepository bookRepository;
 
     //constructor
     public BookManager() {
@@ -59,5 +59,9 @@ public class BookManager {
 
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
+    }
+
+    public BookRepository changeRepository (BookRepository bookRepository){
+        return this.bookRepository = bookRepository;
     }
 }
