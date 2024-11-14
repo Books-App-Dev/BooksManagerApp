@@ -14,7 +14,6 @@ public class BookManager {
     //constructor
     public BookManager() {
     }
-
     //methods
 
     /**

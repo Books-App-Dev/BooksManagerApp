@@ -1,159 +1,139 @@
-## Objetivos de aprendizaje
+# Tech Books Manager App
 
-- Introducirnos a Java y a la OOP
-- Desarrollar un proyecto incremental
-- Empezar a aplicar técnicas de refactorización
-- Acercarnos poco a poco a la arquitectura y a patrones de diseño usados en Spring
-- Incluir algunos tests unitarios
-
-## **Descripción General**
-
-El proyecto consiste en crear una aplicación de consola en Java que permita a los usuarios gestionar una colección de libros técnicos de programación.
-
-La aplicación debe ofrecer una interfaz interactiva en la consola que permita realizar las siguientes operaciones:
-
-1. **Ver todos los libros**
-2. **Añadir un nuevo libro**
-3. **Eliminar un libro**
-4. **Salir de la aplicación**
+**Tech Books Manager** es una aplicación de consola en Java que permite a los usuarios gestionar una colección de libros técnicos de programación. La aplicación proporciona opciones para ver, agregar y eliminar libros, así como cambiar entre diferentes repositorios de datos: en memoria y base de datos MySQL.
 
 ---
 
-# User Stories
+## Table of Contents
+- [Objetivos de Aprendizaje](#objetivos-de-aprendizaje)
+- [Descripción General](#descripción-general)
+- [Funcionalidades Principales](#funcionalidades-principales)
+- [Tecnologías y Conceptos Principales](#tecnologías-y-conceptos-principales)
+- [Instalación y Configuración](#instalación-y-configuración)
+- [Uso](#uso)
+- [Arquitectura](#arquitectura)
+- [Diagrama UML Simplificado](#diagrama-uml-simplificado)
+- [User Stories](#user-stories)
+- [Desarrolladores](#desarrolladores)
 
-### **Historia de Usuario 1: Ver el Menú Principal**
+---
 
-**Como** usuario, **quiero** ver un menú en la consola con opciones para añadir, ver y eliminar libros, **para** poder gestionar mi colección de libros técnicos de programación.
+## Objetivos de Aprendizaje
 
-**Criterios de Aceptación:**
+Este proyecto se ha realizado en el Bootcamp de Factoría F5 - AWS Backend & Cloud.
+- Familiarizarse con los principios de la Programación Orientada a Objetos (OOP) en Java.
+- Desarrollar un proyecto utilizando técnicas de desarrollo incremental.
+- Aplicar principios de refactorización para mejorar el diseño del código.
+- Explorar patrones arquitectónicos como los que se usan en frameworks como Spring.
+- Implementar y ejecutar pruebas unitarias básicas.
 
-- **Escenario 1:** Al iniciar la aplicación, se muestra un menú con las siguientes opciones:
+---
 
-    ```markdown
-    Gestor de Libros Técnicos de Programación
-    1. Añadir libro
-    2. Ver todos los libros
-    3. Eliminar libro
-    4. Cambiar repositorio
-    5. Salir
-    Seleccione una opción:
-    ```
+## Descripción General
 
-- **Escenario 2:** Si el usuario ingresa un número válido se debe mostrar la opción requerida y volver a mostrar el menú principal
+La aplicación permite gestionar una colección de libros técnicos. Los datos se pueden almacenar temporalmente en memoria o en una base de datos MySQL. El usuario puede interactuar con el sistema a través de un menú de consola, que permite realizar varias operaciones de gestión de libros.
 
+### Funcionalidades Principales
+
+- **Añadir Libros**: Permite agregar un nuevo libro proporcionando el título, autor y un ISBN único.
+- **Ver Todos los Libros**: Muestra todos los libros almacenados en el repositorio actual.
+- **Eliminar Libros**: Permite eliminar un libro por su ISBN.
+- **Cambiar Repositorio**: Cambia el almacenamiento de los datos entre memoria y MySQL.
+- **Salir**: Termina la ejecución de la aplicación.
+
+---
+
+## Tecnologías y Conceptos Principales
+
+### Tecnologías Usadas
+- **Java 11**: Lenguaje de programación principal utilizado para desarrollar la aplicación.
+- **Maven**: Herramienta de construcción y gestión de dependencias.
+- **MySQL**: Sistema de gestión de bases de datos utilizado para el almacenamiento persistente.
+- **JDBC**: API de Java para conectarse y ejecutar consultas en la base de datos MySQL.
+- **XAMPP**: Un paquete de software de servidor gratuito que incluye Apache, MySQL, PHP, y Perl. Se utiliza para ejecutar el servidor MySQL localmente, facilitando la administración de la base de datos a través de herramientas como phpMyAdmin.
+
+### Conceptos de Programación
+- **Programación Orientada a Objetos (OOP)**: El proyecto se basa en los principios de OOP como encapsulación, herencia y polimorfismo.
+    - **Encapsulación**: Se aplicó al definir atributos privados en la clase `Book` con métodos públicos `getters` y `setters`.
+    - **Herencia y Polimorfismo**: Se implementó polimorfismo mediante la interfaz `BookRepository`, que tiene múltiples implementaciones (`InMemoryBookRepository` y `MySQLBookRepository`). Esto permite que la aplicación trabaje con diferentes repositorios sin cambiar la lógica de negocio.
+- **Principios SOLID**:
+    - **Single Responsibility Principle (SRP)**: Cada clase tiene una única responsabilidad. Por ejemplo, la clase `Book` solo se encarga de definir el modelo de un libro, mientras que `MySQLBookRepository` gestiona las operaciones con la base de datos.
+    - **Dependency Inversion Principle (DIP)**: La aplicación depende de abstracciones (interfaz `BookRepository`) en lugar de implementaciones concretas. Esto hace que el sistema sea más flexible y fácil de extender.
+- **Gestión de Excepciones**: Se manejan las excepciones de base de datos (`SQLException`) para evitar fallos inesperados.
+- **Patrón de Diseño Repositorio**: Utilizado para gestionar la persistencia de datos de manera centralizada, lo que facilita el cambio de un tipo de almacenamiento a otro.
+
+---
+
+## Instalación y Configuración
+
+1. **Clonar el repositorio**:
+   ```bash
+   git clone https://github.com/tuusuario/tech-books-manager.git
+   
+2. **Configurar la conexión en MySQLConnection.java**:
     ```bash
-    Opción 1: Ver todos los libros:
-    ---
-    Gestor de Libros Técnicos de Programación
-    1. Añadir libro
-    2. Ver todos los libros
-    3. Eliminar libro
-    4. Cambiar repositorio
-    5. Salir
-    Seleccione una opción:
-    ```
+    private static String url = "jdbc:mysql://localhost:3306/my_database";
+    private static String user = "root";
+    private static String password = "tu_contraseña";
 
-- **Escenario 3:** Si el usuario ingresa una opción inválida (por ejemplo, un número fuera del rango o un carácter no numérico), el sistema mostrará el mensaje:
 
+## Uso
+1. **Iniciar la aplicación**: Ejecutar BookConsoleView.java desde tu IDE o usar Maven.
+2. **Navegar por el menú**: Usa las opciones del menú para añadir, ver o eliminar libros, y cambiar de repositorio.
     ```bash
-    Opción inválida. Por favor, seleccione una opción del 1 al 5.
-    ---
-    Gestor de Libros Técnicos de Programación
-    1. Añadir libro
-    2. Ver todos los libros
-    3. Eliminar libro
-    4. Cambiar repositorio
-    5. Salir
-    Seleccione una opción:
-    ```
+   Gestor de Libros Técnicos de Programación
+   1. Añadir libro
+   2. Ver todos los libros
+   3. Eliminar libro
+   4. Cambiar repositorio
+   5. Salir
+      Seleccione una opción:
 
-  Luego, el menú se mostrará nuevamente.
+# Arquitectura
+La aplicación sigue una arquitectura básica de capas:
 
+- **Capa de Presentación**: `BookConsoleView` maneja la interacción con el usuario a través de la consola.
+- **Capa de Negocio**: `BookManager` gestiona la lógica de negocio.
+- **Capa de Persistencia**: `BookRepository`, `InMemoryBookRepository`, y `MySQLBookRepository` se encargan del almacenamiento de datos.
 
----
+## Diagrama UML Simplificado
+El proyecto incluye las siguientes clases principales:
 
-### **Historia de Usuario 2: Ver Todos los Libros**
+- **Book**: Modelo de datos para un libro.
+- **BookManager**: Gestiona la lógica de negocio.
+- **BookRepository**: Interfaz para operaciones CRUD.
+- **InMemoryBookRepository** y **MySQLBookRepository**: Implementaciones del repositorio.
+- **MySQLConnection**: Clase de utilidad para la conexión a la base de datos.
+- **BookConsoleView**: Vista de consola para la interacción con el usuario.
 
-**Como** usuario, **quiero** poder ver una lista de todos los libros almacenados, **para** revisar los libros que tengo en mi colección.
+![UML Diagram](src/main/java/org/example/img/uml.png)
 
-**Criterios de Aceptación:**
+## User Stories
 
-- **Escenario 1:** Desde el menú principal, al seleccionar la opción "2. Ver todos los libros", el sistema mostrará una lista de los libros con la siguiente información:
+### Historia de Usuario 1: Ver el Menú Principal
+**Descripción**:  
+Como usuario, quiero ver un menú en la consola con opciones para gestionar mis libros.
 
-    ```yaml
-    
-    Lista de Libros:
-    ISBN: A123, Título: Effective Java, Autor: Joshua Bloch
-    ```
+### Historia de Usuario 2: Ver Todos los Libros
+**Descripción**:  
+Como usuario, quiero ver una lista de todos los libros almacenados.
 
-- **Escenario 2:** Si no hay libros en la colección, el sistema mostrará el mensaje:
+### Historia de Usuario 3: Añadir un Nuevo Libro
+**Descripción**:  
+Como usuario, quiero añadir un nuevo libro proporcionando título, autor e ISBN.
 
-    ```yaml
-    No hay libros en la colección.
-    ```
+### Historia de Usuario 4: Eliminar un Libro
+**Descripción**:  
+Como usuario, quiero eliminar un libro de mi colección proporcionando el ISBN.
 
-- **Escenario 3:** Después de mostrar la lista o el mensaje, el sistema volverá al menú principal.
+### Historia de Usuario 5: Cambiar el Repositorio
+**Descripción**:  
+Como usuario, quiero cambiar el tipo de repositorio entre memoria y base de datos MySQL.
 
----
+## Desarrolladores
+- **Carolay Vasquez** - https://github.com/carovasq
+- **Fran Garcia** - https://github.com/FranGarciaga
+- **Jaime Castro** - https://github.com/JAIMECASTRO-code
+- **Yuliia Bila** - https://github.com/YuliiaBi1a
 
-### **Historia de Usuario 3: Añadir un Nuevo Libro**
-
-**Como** usuario, **quiero** poder añadir un nuevo libro proporcionando el título, autor e ISBN (una letra y tres números), **para** aumentar mi colección de libros técnicos de programación.
-
-**Criterios de Aceptación:**
-
-- **Escenario 1:** Desde el menú principal, al seleccionar la opción "1. Añadir libro", el sistema me solicitará:
-
-    ```java
-    Ingrese el título:
-    Ingrese el autor:
-    Ingrese el ISBN (una letra seguida de tres números, por ejemplo, A123):
-    ```
-
-- **Escenario 2:** Si proporciono todos los datos correctamente y el ISBN tiene el formato correcto (una letra seguida de tres números), el libro se añadirá al repositorio y se mostrará el mensaje:
-
-    ```css
-    Libro añadido con éxito.
-    ```
-
-- **Escenario 3:** Si dejo algún campo vacío, el sistema me notificará:
-
-    ```
-    Todos los campos son obligatorios. Por favor, intente nuevamente.
-    ```
-
-- **Escenario 4:** Si intento añadir un libro con un ISBN que ya existe en la colección, el sistema mostrará:
-
-    ```css
-    Ya existe un libro con ese ISBN. No se puede añadir el libro.
-    ```
-
-- **Escenario 5:** Después de añadir el libro o en caso de error, el sistema volverá al menú principal.
-
----
-
-### **Historia de Usuario 4: Eliminar un Libro**
-
-**Como** usuario, **quiero** poder eliminar un libro de mi colección proporcionando el ISBN, **para** mantener mi lista de libros organizada y relevante.
-
-**Criterios de Aceptación:**
-
-- **Escenario 1:** Desde el menú principal, al seleccionar la opción "3. Eliminar libro", el sistema me solicitará:
-
-    ```css
-    Ingrese el ISBN del libro a eliminar (una letra seguida de tres números, por ejemplo, A123):
-    ```
-
-- **Escenario 2:** Si ingreso un ISBN que corresponde a un libro en la colección, el libro se eliminará y se mostrará el mensaje:
-
-    ```
-    Libro eliminado con éxito.
-    ```
-
-- **Escenario 3:** Si el ISBN ingresado no cumple con el formato requerido, el sistema mostrará:
-
-    ```scss
-    ISBN inválido. Debe ser una letra seguida de tres números (por ejemplo, A123).
-    ```
-
-- **Escenario 4:** Después de eliminar un libro o en caso de error, el sistema volverá al menú principal.
+   
