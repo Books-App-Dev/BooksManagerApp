@@ -4,7 +4,7 @@
 
 ---
 
-## Table of Contents
+## Tabla de Contenidos
 - [Objetivos de Aprendizaje](#objetivos-de-aprendizaje)
 - [Descripción General](#descripción-general)
 - [Funcionalidades Principales](#funcionalidades-principales)
