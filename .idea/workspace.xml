@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="204334a3-49a0-47e8-abff-10b4942d1421" name="Changes" comment="Modification of inputs validations">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +57,7 @@
   "keyToString": {
     "Application.Books.executor": "Run",
     "Application.Main.executor": "Run",
+    "JUnit.MockBookRepositoryTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
@@ -75,7 +77,7 @@
       <recent name="org.example.util" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.MockBookRepositoryTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="BooksManagerApp" />
@@ -89,8 +91,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MockBookRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BooksManagerApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.MockBookRepositoryTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-Xshare:off -javaagent:C:\Users\Carol\.m2\repository\org\mockito\mockito-core\5.14.2\mockito-core-5.14.2.jar" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.MockBookRepositoryTest" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MockBookRepositoryTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
