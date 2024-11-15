@@ -47,7 +47,7 @@ La aplicación permite gestionar una colección de libros técnicos. Los datos s
 ## Tecnologías y Conceptos Principales
 
 ### Tecnologías Usadas
-- **Java 11**: Lenguaje de programación principal utilizado para desarrollar la aplicación.
+- **Java 21**: Lenguaje de programación principal utilizado para desarrollar la aplicación.
 - **Maven**: Herramienta de construcción y gestión de dependencias.
 - **MySQL**: Sistema de gestión de bases de datos utilizado para el almacenamiento persistente.
 - **JDBC**: API de Java para conectarse y ejecutar consultas en la base de datos MySQL.
@@ -109,7 +109,7 @@ El proyecto incluye las siguientes clases principales:
 - **MySQLConnection**: Clase de utilidad para la conexión a la base de datos.
 - **BookConsoleView**: Vista de consola para la interacción con el usuario.
 
-![UML Diagram](src/main/java/org/example/img/uml.png)
+![UML Diagram](src/main/java/org/example/img/uml-book-manager.png)
 
 ## Pruebas Unitarias
 El proyecto incluye pruebas unitarias que aseguran que el funcionamiento del sistema sea el esperado. Las pruebas están implementadas utilizando el framework JUnit 5 y la librería Mockito para simular las interacciones con los repositorios y otras dependencias externas.

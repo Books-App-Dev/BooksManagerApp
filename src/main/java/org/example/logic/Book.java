@@ -1,9 +1,9 @@
-package logic;
+package org.example.logic;
 
 public class Book {
-    String isbn;
-    String titulo;
-    String autor;
+    private String isbn;
+    private String titulo;
+    private String autor;
 
     public Book(String isbn, String titulo, String autor) {
         this.isbn = isbn;

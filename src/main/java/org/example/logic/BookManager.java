@@ -1,6 +1,6 @@
-package logic;
+package org.example.logic;
 
-import org.example.util.Color;
+import org.example.presentation.Color;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;

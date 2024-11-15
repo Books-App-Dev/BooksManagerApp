@@ -1,8 +1,8 @@
-package persistance;
+package org.example.persistance;
 
-import logic.Book;
-import logic.BookRepository;
-import config.MySQLConnection;
+import org.example.logic.Book;
+import org.example.logic.BookRepository;
+import org.example.config.MySQLConnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,16 +19,16 @@ public class MySQLBookRepository implements BookRepository {
         String sql = "INSERT INTO libros (isbn, title,author) VALUES (?, ?, ?)";
 
         try (Connection connection = MySQLConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement(sql)) {
+             PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setString (1, book.getIsbn());
-            statement.setString (2, book.getTitulo());
+            statement.setString(1, book.getIsbn());
+            statement.setString(2, book.getTitulo());
             statement.setString(3, book.getAutor());
 
             statement.execute();
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-
         }
     }
 
@@ -38,8 +38,8 @@ public class MySQLBookRepository implements BookRepository {
         List<Book> bookList = new ArrayList<>();
 
         try (Connection connection = MySQLConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet res = statement.executeQuery()) {
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet res = statement.executeQuery()) {
 
             while (res.next()) {
                 String isbn = res.getString("isbn");
@@ -56,11 +56,11 @@ public class MySQLBookRepository implements BookRepository {
     }
 
     @Override
-    public Optional<Book> findByIsbn(String isbn)  {
+    public Optional<Book> findByIsbn(String isbn) {
         String sql = "SELECT * FROM libros WHERE isbn=?";
 
         try (Connection connection = MySQLConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement(sql)) {
+             PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setString(1, isbn);
             ResultSet res = statement.executeQuery();
@@ -83,7 +83,7 @@ public class MySQLBookRepository implements BookRepository {
         String sql = "DELETE FROM libros WHERE isbn = ?";
 
         try (Connection connection = MySQLConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement(sql)) {
+             PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, isbn);
 
             statement.executeUpdate();

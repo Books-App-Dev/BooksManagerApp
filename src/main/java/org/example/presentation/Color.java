@@ -1,4 +1,4 @@
-package org.example.util;
+package org.example.presentation;
 
 public class Color {
 	public static final String RESET = "\033[0m";

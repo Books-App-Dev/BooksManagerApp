@@ -1,4 +1,4 @@
-package logic;
+package org.example.logic;
 
 import java.util.List;
 import java.util.Optional;

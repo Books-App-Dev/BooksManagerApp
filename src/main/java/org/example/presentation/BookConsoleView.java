@@ -1,11 +1,10 @@
-package presentation;
+package org.example.presentation;
 
-import logic.Book;
-import logic.BookManager;
-import logic.BookRepository;
-import org.example.util.Color;
-import persistance.InMemoryBookRepository;
-import persistance.MySQLBookRepository;
+import org.example.logic.Book;
+import org.example.logic.BookManager;
+import org.example.logic.BookRepository;
+import org.example.persistance.InMemoryBookRepository;
+import org.example.persistance.MySQLBookRepository;
 
 import java.util.List;
 import java.util.Scanner;

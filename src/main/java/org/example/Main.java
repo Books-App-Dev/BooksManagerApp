@@ -1,6 +1,6 @@
 package org.example;
 
-import presentation.BookConsoleView;
+import org.example.presentation.BookConsoleView;
 
 import java.sql.SQLException;
 

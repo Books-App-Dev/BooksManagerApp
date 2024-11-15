@@ -1,7 +1,7 @@
-package persistance;
+package org.example.persistance;
 
-import logic.Book;
-import logic.BookRepository;
+import org.example.logic.Book;
+import org.example.logic.BookRepository;
 
 import java.util.ArrayList;
 import java.util.List;
