@@ -13,6 +13,7 @@
 - [Uso](#uso)
 - [Arquitectura](#arquitectura)
 - [Diagrama UML Simplificado](#diagrama-uml-simplificado)
+- [Pruebas Unitarias](#pruebas-unitarias)
 - [User Stories](#user-stories)
 - [Desarrolladores](#desarrolladores)
 
@@ -51,6 +52,8 @@ La aplicación permite gestionar una colección de libros técnicos. Los datos s
 - **MySQL**: Sistema de gestión de bases de datos utilizado para el almacenamiento persistente.
 - **JDBC**: API de Java para conectarse y ejecutar consultas en la base de datos MySQL.
 - **XAMPP**: Un paquete de software de servidor gratuito que incluye Apache, MySQL, PHP, y Perl. Se utiliza para ejecutar el servidor MySQL localmente, facilitando la administración de la base de datos a través de herramientas como phpMyAdmin.
+- **JUnit 5**: Para pruebas unitarias.
+- **Mockito**: Para mockear dependencias y verificar interacciones en los tests.
 
 ### Conceptos de Programación
 - **Programación Orientada a Objetos (OOP)**: El proyecto se basa en los principios de OOP como encapsulación, herencia y polimorfismo.
@@ -132,8 +135,19 @@ Como usuario, quiero cambiar el tipo de repositorio entre memoria y base de dato
 
 ## Desarrolladores
 - **Carolay Vasquez** - https://github.com/carovasq
-- **Fran Garcia** - https://github.com/FranGarciaga
-- **Jaime Castro** - https://github.com/JAIMECASTRO-code
-- **Yuliia Bila** - https://github.com/YuliiaBi1a
+
+# Pruebas Unitarias
+El proyecto incluye pruebas unitarias que aseguran que el funcionamiento del sistema sea el esperado. Las pruebas están implementadas utilizando el framework JUnit 5 y la librería Mockito para simular las interacciones con los repositorios y otras dependencias externas.
+
+## Casos de prueba
+Algunos de los casos de prueba implementados son los siguientes:
+
+-Guardar un libro: Verifica que un libro se guarda correctamente en el repositorio.
+-Encontrar todos los libros: Asegura que se pueden recuperar todos los libros almacenados en el repositorio.
+-Buscar un libro por ISBN: Comprueba que se puede encontrar un libro específico dado su ISBN.
+-Eliminar un libro por ISBN: Verifica que un libro puede ser eliminado del repositorio.
+    - **Fran Garcia** - https://github.com/FranGarciaga
+    - **Jaime Castro** - https://github.com/JAIMECASTRO-code
+    - **Yuliia Bila** - https://github.com/YuliiaBi1a
 
    
