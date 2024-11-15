@@ -67,11 +67,11 @@ public class BookConsoleView {
 
     private void printAddBookMenu() {
 
-        System.out.println("Ingrese el título: ");
-        String scTitle = scanner.nextLine();
-
         System.out.println("Ingrese el autor: ");
         String scAuthor = scanner.nextLine();
+
+        System.out.println("Ingrese el título: ");
+        String scTitle = scanner.nextLine();
 
         System.out.println("Ingrese el ISBN (una letra seguida de tres números, por ejemplo, A123): ");
         String scISBN = scanner.nextLine().toUpperCase();
