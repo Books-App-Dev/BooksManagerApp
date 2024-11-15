@@ -111,6 +111,17 @@ El proyecto incluye las siguientes clases principales:
 
 ![UML Diagram](src/main/java/org/example/img/uml.png)
 
+## Pruebas Unitarias
+El proyecto incluye pruebas unitarias que aseguran que el funcionamiento del sistema sea el esperado. Las pruebas están implementadas utilizando el framework JUnit 5 y la librería Mockito para simular las interacciones con los repositorios y otras dependencias externas.
+
+### Casos de prueba
+Algunos de los casos de prueba implementados son los siguientes:
+
+- Guardar un libro: Verifica que un libro se guarda correctamente en el repositorio.
+- Encontrar todos los libros: Asegura que se pueden recuperar todos los libros almacenados en el repositorio.
+- Buscar un libro por ISBN: Comprueba que se puede encontrar un libro específico dado su ISBN.
+- Eliminar un libro por ISBN: Verifica que un libro puede ser eliminado del repositorio.
+
 ## User Stories
 
 ### Historia de Usuario 1: Ver el Menú Principal
@@ -134,20 +145,12 @@ Como usuario, quiero eliminar un libro de mi colección proporcionando el ISBN.
 Como usuario, quiero cambiar el tipo de repositorio entre memoria y base de datos MySQL.
 
 ## Desarrolladores
-- **Carolay Vasquez** - https://github.com/carovasq
+ - **Carolay Vasquez** - https://github.com/carovasq
+ - **Fran Garcia** - https://github.com/FranGarciaga
+ - **Jaime Castro** - https://github.com/JAIMECASTRO-code
+ - **Yuliia Bila** - https://github.com/YuliiaBi1a
 
-# Pruebas Unitarias
-El proyecto incluye pruebas unitarias que aseguran que el funcionamiento del sistema sea el esperado. Las pruebas están implementadas utilizando el framework JUnit 5 y la librería Mockito para simular las interacciones con los repositorios y otras dependencias externas.
 
-## Casos de prueba
-Algunos de los casos de prueba implementados son los siguientes:
 
--Guardar un libro: Verifica que un libro se guarda correctamente en el repositorio.
--Encontrar todos los libros: Asegura que se pueden recuperar todos los libros almacenados en el repositorio.
--Buscar un libro por ISBN: Comprueba que se puede encontrar un libro específico dado su ISBN.
--Eliminar un libro por ISBN: Verifica que un libro puede ser eliminado del repositorio.
-    - **Fran Garcia** - https://github.com/FranGarciaga
-    - **Jaime Castro** - https://github.com/JAIMECASTRO-code
-    - **Yuliia Bila** - https://github.com/YuliiaBi1a
 
    
